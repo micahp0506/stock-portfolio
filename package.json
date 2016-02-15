@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/micahp0506/stock-portfolio#readme",
   "dependencies": {
+    "mongoose": "^4.4.3",
+    "body-parser": "^1.14.2",
     "express": "^4.13.4",
     "jade": "^1.11.0"
   }
