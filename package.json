@@ -1,0 +1,23 @@
+{
+  "name": "stock-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micahp0506/stock-portfolio.git"
+  },
+  "author": "Micah Wells <micahp0506@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/micahp0506/stock-portfolio/issues"
+  },
+  "homepage": "https://github.com/micahp0506/stock-portfolio#readme",
+  "dependencies": {
+    "jade": "^1.11.0"
+  }
+}
