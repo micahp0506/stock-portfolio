@@ -5,7 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
-// const index = require('./routes/');
+const index = require('./routes/');
 // local modules
 const PORT = process.env.PORT || 3000;
 const MONGODB_HOST = process.env.MONGODB_HOST || 'localhost';
@@ -31,11 +31,11 @@ const MONGODB_URL = `mongodb://${MONGODB_URL_PREFIX}${MONGODB_HOST}:${MONGODB_PO
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.use(index);
+app.use(index);
 
-app.get('/', (req, res) => {
-    res.send('hello world');
-})
+// app.get('/', (req, res) => {
+//     res.send('hello world');
+// })
 
 // app.use(require('node-sass-middleware')({
 //   src: path.join(__dirname, 'public'),
