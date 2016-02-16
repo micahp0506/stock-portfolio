@@ -26,9 +26,13 @@
   "homepage": "https://github.com/micahp0506/stock-portfolio#readme",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "bootstrap": "^3.3.6",
+    "cheerio": "^0.20.0",
     "express": "^4.13.4",
     "jade": "^1.11.0",
+    "lodash": "^4.4.0",
     "mongoose": "^4.4.3",
-    "node-sass-middleware": "^0.9.7"
+    "node-sass-middleware": "^0.9.7",
+    "request": "^2.69.0"
   }
 }
