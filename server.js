@@ -37,6 +37,12 @@ app.use(index);
 //     res.send('hello world');
 // })
 
+app.use(require('node-sass-middleware')({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax: true,
+  sourceMap: true
+}));
 
 mongoose.connect(MONGODB_URL);
 

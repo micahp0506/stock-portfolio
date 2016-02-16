@@ -1,4 +1,4 @@
-  {
+{
   "name": "stock-portfolio",
   "version": "1.0.0",
   "description": "",
@@ -25,9 +25,10 @@
   },
   "homepage": "https://github.com/micahp0506/stock-portfolio#readme",
   "dependencies": {
-    "mongoose": "^4.4.3",
     "body-parser": "^1.14.2",
     "express": "^4.13.4",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "mongoose": "^4.4.3",
+    "node-sass-middleware": "^0.9.7"
   }
 }
