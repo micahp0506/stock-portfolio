@@ -4,8 +4,8 @@
 const express = require('express');
 const router = express.Router();
 
-const portfolio = require('../controllers/portfolio');
+const detail = require('../controllers/detail');
 
-router.get('/', portfolio.index);
+router.get('/detail', detail.index);
 
 module.exports = router;
