@@ -4,8 +4,9 @@
 const express = require('express');
 const router = express.Router();
 
-const quote = require('../controllers/quote');
+const ctrl = require('../controllers/quote');
 
-router.use('/quote', quote.index);
+router.get('/quote', ctrl.index);
+router.post('/quote', ctrl.newQuote);
 
 module.exports = router;

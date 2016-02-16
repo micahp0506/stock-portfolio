@@ -1,4 +1,7 @@
 block content
-  body
-    input(type='text', name='symbol', value=symbol, placeholder='Enter Symbol')
-    button.btn(type='submit') Get
+    .container
+        h1 Pick A Stock
+            form(method='POST', action='/quote')
+                label symbol
+                input(type='text', name='symbol', placeholder='Enter Symbol')
+                button(type='submit') Get Quote
