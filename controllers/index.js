@@ -2,5 +2,5 @@
 
 
 module.exports.index = (req, res) => {
-    res.send('Hello World');
+    res.render('Hello World');
 }
