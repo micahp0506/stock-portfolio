@@ -33,9 +33,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(index);
 
-// app.get('/', (req, res) => {
-//     res.send('hello world');
-// })
+app.get('/', (req, res) => {
+    res.send('hello world');
+})
 
 // app.use(require('node-sass-middleware')({
 //   src: path.join(__dirname, 'public'),
