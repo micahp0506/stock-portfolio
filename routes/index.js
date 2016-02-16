@@ -4,7 +4,7 @@
 const express = require('express');
 const router = express.Router();
 
-const index = require('./');
+const index = require('../controllers/');
 
 router.use(index);
 
