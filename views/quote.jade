@@ -5,3 +5,9 @@ block content
                 label symbol
                 input(type='text', name='symbol', placeholder='Enter Symbol')
                 button(type='submit') Get Quote
+
+            if results
+                ul Click for more details:
+                    each result, i in results
+                        li
+                            a(href="/detail/#{result.Symbol}") #{result.Symbol} #{result.Name}
