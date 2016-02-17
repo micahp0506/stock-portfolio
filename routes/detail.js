@@ -6,6 +6,6 @@ const router = express.Router();
 
 const detail = require('../controllers/detail');
 
-router.get('/detail', detail.index);
+router.get('/detail/:symbol', detail.index);
 
 module.exports = router;

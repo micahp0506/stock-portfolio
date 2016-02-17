@@ -1,13 +1,17 @@
+link(rel='stylesheet', href='/stylesheets/style.css')
+link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css')
+
 block content
     .container
-        h1 Pick A Stock
+        h1 Search for a stock
+            div.form-group
             form(method='POST', action='/quote')
-                label symbol
+                label
                 input(type='text', name='symbol', placeholder='Enter Symbol')
                 button(type='submit') Get Quote
 
             if results
-                ul Click for more details:
+                ul Search results:
                     each result, i in results
-                        li
-                            a(href="/detail/#{result.Symbol}") #{result.Symbol} #{result.Name}
+                        li.nostyle
+                            a.decoration(href="/detail/#{result.Symbol}") #{result.Symbol} #{result.Name}

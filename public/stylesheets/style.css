@@ -1,4 +1,11 @@
 .yellow {
-    background: yellow
+    background: yellow;
 }
 
+.decoration {
+    text-decoration: none;
+}
+
+.nostyle {
+    list-style-type: none;
+}
