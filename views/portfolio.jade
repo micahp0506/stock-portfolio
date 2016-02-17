@@ -10,8 +10,14 @@ block content
           th Company
           th Price
           th Qty
-        tr
-          td AAPL
-          td Apple
-          td 96.12
-          td 50
+
+        if results
+          each result, i in results
+            tr
+              td #{result.symbol}
+              td #{result.name}
+              td #{result.price}
+              td #{result.shares}
+        table
+          tr
+            td Total: $
