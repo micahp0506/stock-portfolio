@@ -18,11 +18,11 @@ block content
     form(method='POST', action="/buy/#{result.Symbol}")
         .form-group
             label Qty:
-            input(type="text", name='symbolSearch', placeholder='Enter number of shares.')
+            input(type="text", name='buyQty', placeholder='Enter number of shares.')
             button(type="submit" class="btn btn-default") Buy
 
     form(method='POST', action="/sell/#{result.Symbol}")
         .form-group
             label Qty:
-            input(type="text", name='symbolSearch', placeholder='Enter number of shares.')
+            input(type="text", name='sellQty', placeholder='Enter number of shares.')
             button(type="submit" class="btn btn-default") Sell
