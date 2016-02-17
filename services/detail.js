@@ -25,8 +25,10 @@ const getLastPrice = () =>{
 }
 
 module.exports = {
+
     setInfo: setInfo,
     getName: getName,
     getSymbol: getSymbol,
     getLastPrice: getLastPrice
+
 }

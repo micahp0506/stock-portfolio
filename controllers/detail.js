@@ -35,14 +35,15 @@ module.exports.buy = (req, res) => {
     // console.log("symbol", symbol);
     let price = storage.getLastPrice();
     // console.log("price", price);
-     let obj = new detail ({
+
+    let obj = new detail ({
 
         name: name,
         symbol: symbol,
         shares: shares,
         price: price
 
-  });
+    });
 
   obj.save((err, newObj) => {
     if (err) throw (err);
@@ -55,7 +56,7 @@ module.exports.buy = (req, res) => {
 
 module.exports.sell = (req, res) => {
     let shares = req.body.sellQty;
-    console.log(typeof(shares));
+    // console.log(typeof(shares));
     // console.log("shares", shares);
     let name = storage.getName();
     // console.log("name", name);
@@ -63,13 +64,14 @@ module.exports.sell = (req, res) => {
     // console.log("symbol", symbol);
     let price = storage.getLastPrice();
 
+
     detail.findOne().sort('-_id').exec((err, doc) => {
-        console.log("doc", doc);
+        // console.log("doc", doc);
         // console.log(typeof(doc.shares));
-        shares = parseInt(shares);
         let docShares = parseInt(doc.shares);
         shares = docShares - shares;
         // console.log("shares", shares);
+
         detail.findOne({_id: doc._id}).remove().exec();
 
         let obj = new detail ({

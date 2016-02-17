@@ -6,8 +6,8 @@ const Detail = mongoose.model('detail', mongoose.Schema
     ({
     name: String,
     symbol: String,
-    shares: String,
-    price: String
+    shares: Number,
+    price: Number
 }));
 
 module.exports = Detail;
