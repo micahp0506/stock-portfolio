@@ -1,6 +1,13 @@
 'use strict'
 
 
+module.exports = {
+    setInfo: setInfo,
+    getName: getName,
+    getSymbol: getSymbol,
+    getLastPrice: getLastPrice
+}
+
 let Stock = {};
 
 const setInfo = (n, s, l) => {
@@ -24,9 +31,4 @@ const getLastPrice = () =>{
     return Stock.LastPrice
 }
 
-module.exports = {
-    setInfo: setInfo,
-    getName: getName,
-    getSymbol: getSymbol,
-    getLastPrice: getLastPrice
-}
+
