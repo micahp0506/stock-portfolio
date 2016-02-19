@@ -12,12 +12,16 @@ block content
           th Qty
 
         if results
+          - var total = 0
           each result, i in results
             tr
               td #{result.symbol}
               td #{result.name}
               td #{result.price}
               td #{result.shares}
+              - total += result.price * result.shares
         table
           tr
-            td Total: $
+            td
+              label Total:
+              span  $#{total}
