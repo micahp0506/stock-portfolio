@@ -31,6 +31,7 @@ module.exports.index = (req, res) => {
         });
         // Getting the updated data from database and sending it to the portfolio page(index)
         detail.find().exec((err, doc) => {
+            // Rendering data to portfolio page
             res.render('portfolio', {
                results: doc
             });

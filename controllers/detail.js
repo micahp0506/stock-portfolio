@@ -69,14 +69,15 @@ module.exports.sell = (req, res) => {
     let symbol = storage.getSymbol();
     // Getting stored price of stock
     let price = storage.getLastPrice();
-
-
+    // Querying the database for the selected stock
     detail.findOne().sort('-_id').exec((err, doc) => {
+        // Making shars a number and storing them
         let docShares = parseInt(doc.shares);
+        // Subtracting the stored amount of shares to the amount to be sold
         shares = docShares - shares;
-
+        // Removing the old object
         detail.findOne({_id: doc._id}).remove().exec();
-
+        // Creating new object with new stock share amount
         let obj = new detail ({
 
             name: name,
@@ -85,10 +86,10 @@ module.exports.sell = (req, res) => {
             price: price
 
         });
-
+        // Sending new data to database
         obj.save((err, newObj) => {
             if (err) throw (err);
-
+            // Acknowledgement of sold stock
             res.send(`<h1>You now have ${shares} shares of ${newObj.name}.</h1>`);
         });
     });
