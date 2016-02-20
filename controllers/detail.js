@@ -7,35 +7,41 @@ const storage = require('../services/detail');
 const detail = require('../models/detail');
 
 module.exports.index = (req, res) => {
+    // Stock symbol for query paramater
     const symbol = req.params.symbol;
-    // console.log("symbol", symbol);
+    // variable to hold url
     const url = `http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=${symbol}`;
+    // Making API call
     request.get(url, (err, response, body) => {
+        // Error handler
         if (err) throw (err);
+        // Parsing ata
         let result = JSON.parse(body);
+        // Rendering detail page with data
         res.render('detail', {
             result: result
-        })
+        });
+        // Variable to hold name of stock
         let name = result.Name;
-        // console.log("name", name);
+        // Variable to hold symbol of stock
         let symbol = result.Symbol;
-        // console.log("symbol", symbol);
+        // Variable to hold last price of stock
         let price = result.LastPrice;
-        // console.log("price", price);
+        // Storing name, symbol, price temporarily for use in post
         storage.setInfo(name, symbol, price);
     });
 };
 
 module.exports.buy = (req, res) => {
+    // Getting number of shares to sell form req param
     let shares = req.body.buyQty;
-    // console.log("shares", shares);
+    // Getting stored name of stock
     let name = storage.getName();
-    // console.log("name", name);
+    // Getting stored symbol of stock
     let symbol = storage.getSymbol();
-    // console.log("symbol", symbol);
+    // Getting stored price
     let price = storage.getLastPrice();
-    // console.log("price", price);
-
+    // Creating object to store in the database
     let obj = new detail ({
 
         name: name,
@@ -44,10 +50,10 @@ module.exports.buy = (req, res) => {
         price: price
 
     });
-
+    // Storing new object in database
   obj.save((err, newObj) => {
     if (err) throw (err);
-
+    // Acknowledgement of purchase of stock
     res.send(`<h1>You have purchased ${newObj.shares} shares of ${newObj.name}.</h1>`);
   });
 
@@ -55,22 +61,19 @@ module.exports.buy = (req, res) => {
 };
 
 module.exports.sell = (req, res) => {
+    // Number of shares to sell for query paramater
     let shares = req.body.sellQty;
-    // console.log(typeof(shares));
-    // console.log("shares", shares);
+    // Getting stored name of stock
     let name = storage.getName();
-    // console.log("name", name);
+    // Getting stored symbol of stock
     let symbol = storage.getSymbol();
-    // console.log("symbol", symbol);
+    // Getting stored price of stock
     let price = storage.getLastPrice();
 
 
     detail.findOne().sort('-_id').exec((err, doc) => {
-        // console.log("doc", doc);
-        // console.log(typeof(doc.shares));
         let docShares = parseInt(doc.shares);
         shares = docShares - shares;
-        // console.log("shares", shares);
 
         detail.findOne({_id: doc._id}).remove().exec();
 

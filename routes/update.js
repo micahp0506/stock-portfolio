@@ -4,9 +4,9 @@
 const express = require('express');
 const router = express.Router();
 
-const update = require('../controllers/update');
+const ctrl = require('../controllers/update');
 
-router.get('/update', update.index);
+router.get('/update', ctrl.index);
 
 
 module.exports = router;
