@@ -9,3 +9,12 @@
 .nostyle {
     list-style-type: none;
 }
+
+.lookup {
+    text-align: center;
+    display: block;
+}
+
+#header {
+    text-align: center;
+}
