@@ -9,6 +9,7 @@ const detail = require('../models/detail');
 module.exports.index = (req, res) => {
     // Stock symbol for query paramater
     const symbol = req.params.symbol;
+    // console.log("symbol", symbol);
     // variable to hold url
     const url = `https://finance.yahoo.com/webservice/v1/symbols/${symbol}/quote?format=json`;
     // Making API call
@@ -17,8 +18,10 @@ module.exports.index = (req, res) => {
         if (err) throw (err);
         // Parsing ata
         let result = JSON.parse(body);
+        // console.log("result", result);
         // Getting  down to level to get needed info
-        result = result.list.resources[0].resource;
+        result = result.list.resources[0].resource.fields;
+        console.log("result", result);
         // Rendering detail page with data
         res.render('detail', {
             result: result
