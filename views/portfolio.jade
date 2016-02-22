@@ -1,10 +1,10 @@
 link(rel='stylesheet', href='/stylesheets/style.css')
 link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css')
 
-//- meta(http-equiv="refresh" content="60;url=/update")
+meta(http-equiv="refresh" content="5;url=/update")
 block content
     h1#header My Stock Portfolio
-    p#header Stock prices update every 60 seconds
+    p#header Stock prices update every 5 seconds
     a.lookup(href='/quote') Look Up A Stock
     div
       table.table.table-hover
@@ -23,6 +23,7 @@ block content
               td #{result.price}
               td #{result.shares}
               - total += result.price * result.shares
+              - total = +total.toFixed(2);
         table
           tr
             td

@@ -10,13 +10,15 @@ module.exports.index = (req, res) => {
     // Stock symbol for query paramater
     const symbol = req.params.symbol;
     // variable to hold url
-    const url = `http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=${symbol}`;
+    const url = `https://finance.yahoo.com/webservice/v1/symbols/${symbol}/quote?format=json`;
     // Making API call
     request.get(url, (err, response, body) => {
         // Error handler
         if (err) throw (err);
         // Parsing ata
         let result = JSON.parse(body);
+        // Getting  down to level to get needed info
+        result = result.list.resources[0].resource;
         // Rendering detail page with data
         res.render('detail', {
             result: result

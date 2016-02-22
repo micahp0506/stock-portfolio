@@ -14,27 +14,30 @@ module.exports.index = (req, res) => {
             // Setting mongodb id to a variable
             let id = result._id;
             // URL for API
-            let url= `http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=${result.symbol}`;
+            let url= `https://finance.yahoo.com/webservice/v1/symbols/${result.symbol}/quote?format=json`;
             // Calling API and returning with requested stock data
             request.get(url, (err, response, body) => {
                 // Error handler
                 if (err) throw (err);
                 // Parsing the body object
                 let newResult = JSON.parse(body);
+                // Getting  down to level to get needed info
+                newResult = newResult.list.resources[0].resource.fields;
                 // Variable to hold updated stock price
-                let newPrice = newResult.LastPrice;
-                // Sendin updated info to the database
-                detail.update({symbol: id}, {price: newPrice}, (err) =>{
+                let newPrice = newResult.price;
+                // Sending updated info to the database
+                let query = {_id: id};
+                detail.update(query, {price: newPrice}, (err) =>{
                     if (err) throw err
                 });
             });
         });
-        // Getting the updated data from database and sending it to the portfolio page(index)
-        detail.find().exec((err, doc) => {
-            // Rendering data to portfolio page
-            res.render('portfolio', {
-               results: doc
-            });
+    });
+    // Getting the updated data from database and sending it to the portfolio page(index)
+    detail.find().exec((err, doc) => {
+        // Rendering data to portfolio page
+         res.render('portfolio', {
+            results: doc
         });
     });
 };
